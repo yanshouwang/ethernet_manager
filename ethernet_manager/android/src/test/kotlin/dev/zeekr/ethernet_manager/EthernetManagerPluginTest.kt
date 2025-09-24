@@ -1,4 +1,4 @@
-package com.example.ethernet_manager
+package dev.zeekr.ethernet_manager
 
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel

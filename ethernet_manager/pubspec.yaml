@@ -5,8 +5,7 @@ homepage:
 
 environment:
   sdk: ^3.7.2
-  flutter: ">=3.3.0"
-resolution: workspace
+  flutter: '>=3.3.0'
 
 dependencies:
   flutter:
@@ -17,6 +16,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  pigeon: ^26.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -36,7 +36,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.ethernet_manager
+        package: dev.zeekr.ethernet_manager
         pluginClass: EthernetManagerPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

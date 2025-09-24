@@ -1,8 +1,3 @@
-
-import 'ethernet_manager_platform_interface.dart';
-
-class EthernetManager {
-  Future<String?> getPlatformVersion() {
-    return EthernetManagerPlatform.instance.getPlatformVersion();
-  }
-}
+export 'src/ethernet_manager_api.dart';
+export 'src/ethernet_manager.dart';
+export 'src/ip_assignment.dart';
