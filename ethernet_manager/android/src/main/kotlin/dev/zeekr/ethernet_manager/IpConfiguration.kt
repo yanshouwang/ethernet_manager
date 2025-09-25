@@ -2,16 +2,17 @@ package dev.zeekr.ethernet_manager
 
 import android.annotation.SuppressLint
 
+@SuppressLint("PrivateApi")
 class IpConfiguration(val instance: Any) {
     companion object {
-        val clazz: Class<*> @SuppressLint("PrivateApi") get() = Class.forName("android.net.IpConfiguration")
+        val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration")
     }
 
     enum class IpAssignment {
         STATIC, DCHP, UNASSIGNED;
 
         companion object {
-            val clazz: Class<*> @SuppressLint("PrivateApi") get() = Class.forName("android.net.IpConfiguration\$IpAssignment")
+            val clazz: Class<*> get() = Class.forName("android.net.IpConfiguration\$IpAssignment")
 
             fun of(instance: Any): IpAssignment {
                 val index = IpAssignment.clazz.enumConstants!!.indexOf(instance)

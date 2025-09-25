@@ -6,9 +6,10 @@ import android.net.LinkProperties
 import android.net.RouteInfo
 import java.net.InetAddress
 
+@SuppressLint("PrivateApi")
 class StaticIpConfiguration(val instance: Any) {
     companion object {
-        val clazz: Class<*> @SuppressLint("PrivateApi") get() = Class.forName("android.net.StaticIpConfiguration")
+        val clazz: Class<*> get() = Class.forName("android.net.StaticIpConfiguration")
     }
 
     fun clear() {

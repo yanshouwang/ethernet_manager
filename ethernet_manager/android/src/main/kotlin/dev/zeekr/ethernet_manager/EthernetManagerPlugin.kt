@@ -1,6 +1,5 @@
 package dev.zeekr.ethernet_manager
 
-import android.net.IpConfiguration
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 
 /** EthernetManagerPlugin */

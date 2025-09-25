@@ -2,7 +2,6 @@ package dev.zeekr.ethernet_manager
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import net.bytebuddy.ByteBuddy
 import net.bytebuddy.android.AndroidClassLoadingStrategy
 import net.bytebuddy.description.method.MethodDescription
@@ -10,6 +9,7 @@ import net.bytebuddy.implementation.InvocationHandlerAdapter
 import net.bytebuddy.matcher.ElementMatchers
 import java.lang.reflect.InvocationHandler
 
+@SuppressLint("PrivateApi")
 class EthernetManager(context: Context) {
     companion object {
         val ETHERNET_SERVICE: String
@@ -18,12 +18,12 @@ class EthernetManager(context: Context) {
                 return field.get(null) as String
             }
 
-        val clazz: Class<*> @SuppressLint("PrivateApi") get() = Class.forName("android.net.EthernetManager")
+        val clazz: Class<*> get() = Class.forName("android.net.EthernetManager")
     }
 
     abstract class Listener(context: Context) {
         companion object {
-            val clazz: Class<*> @SuppressLint("PrivateApi") get() = Class.forName("android.net.EthernetManager.Listener")
+            val clazz: Class<*> get() = Class.forName("android.net.EthernetManager.Listener")
         }
 
         val instance: Any
@@ -54,7 +54,6 @@ class EthernetManager(context: Context) {
     }
 
     fun setConfiguration(iface: String, config: IpConfiguration) {
-        // TODO: 跳过底层权限检查
         val method = clazz.getMethod("setConfiguration", String::class.java, IpConfiguration.clazz)
         method.invoke(this.instance, iface, config.instance)
     }

@@ -1,3 +1,11 @@
 export 'src/ethernet_manager_api.dart';
+export 'src/ethernet_manager_availability_changed_event.dart';
 export 'src/ethernet_manager.dart';
+export 'src/inet_address.dart';
 export 'src/ip_assignment.dart';
+export 'src/ip_configuration.dart';
+export 'src/link_address.dart';
+export 'src/link_properties.dart';
+export 'src/network_interface.dart';
+export 'src/route_info.dart';
+export 'src/static_ip_configuration.dart';

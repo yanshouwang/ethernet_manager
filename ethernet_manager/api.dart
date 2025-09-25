@@ -57,7 +57,6 @@ abstract class StaticIpConfigurationProxyApi {
   InetAddressProxyApi? getGateway();
   List<InetAddressProxyApi> getDnsServers();
   String? getDomains();
-
   void addDnsServer(InetAddressProxyApi server);
   List<RouteInfoProxyApi> getRoutes([String? iface]);
   LinkPropertiesProxyApi toLinkProperties([String? iface]);

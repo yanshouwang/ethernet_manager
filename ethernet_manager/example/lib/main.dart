@@ -36,14 +36,17 @@ class _MyAppState extends State<MyApp> {
 
   void _test() async {
     final iface = 'eth0';
-    var config = await _ethernetManager.getConfiguration(iface);
-    var ipAssignment = await config.getIpAssignment();
+    final config = await _ethernetManager.getConfiguration(iface);
+    final ipAssignment = await config.getIpAssignment();
     debugPrint('getIpAssignment: $ipAssignment');
-    config.setIpAssignment(IpAssignment.dhcp);
-    await _ethernetManager.setConfiguration(iface, config);
-    config = await _ethernetManager.getConfiguration(iface);
-    ipAssignment = await config.getIpAssignment();
-    debugPrint('getIpAssignment: $ipAssignment');
+    final staticConfig = await config.getStaticIpConfiguration();
+    debugPrint('getStaticIpConfiguration: $staticConfig');
+    // Need signature permissions.
+    // config.setIpAssignment(IpAssignment.dhcp);
+    // await _ethernetManager.setConfiguration(iface, config);
+    // config = await _ethernetManager.getConfiguration(iface);
+    // ipAssignment = await config.getIpAssignment();
+    // debugPrint('getIpAssignment: $ipAssignment');
     final ifaces = await _ethernetManager.getAvailableInterfaces();
     debugPrint('getAvailableInterfaces: $ifaces');
     final isAvailable = await _ethernetManager.isAvailable();
