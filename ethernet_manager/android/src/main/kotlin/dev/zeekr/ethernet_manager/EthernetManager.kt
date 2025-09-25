@@ -23,7 +23,7 @@ class EthernetManager(context: Context) {
 
     abstract class Listener(context: Context) {
         companion object {
-            val clazz: Class<*> get() = Class.forName("android.net.EthernetManager.Listener")
+            val clazz: Class<*> get() = Class.forName("android.net.EthernetManager\$Listener")
         }
 
         val instance: Any
@@ -33,7 +33,9 @@ class EthernetManager(context: Context) {
             val handler = InvocationHandler { _, _, args ->
                 val iface = args[0] as String
                 val isAvailable = args[1] as Boolean
-                onAvailabilityChanged(iface, isAvailable)
+                EthernetManagerUtil.runOnMainThread {
+                    onAvailabilityChanged(iface, isAvailable)
+                }
             }
             val implementation = InvocationHandlerAdapter.of(handler)
             val privateDirectory = context.getDir("generated", Context.MODE_PRIVATE)

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:ethernet_manager/ethernet_manager.dart';
@@ -15,11 +17,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late final EthernetManager _ethernetManager;
+  late final StreamSubscription _onAvailablityChangedSubscription;
 
   @override
   void initState() {
     super.initState();
     _ethernetManager = EthernetManager();
+    _onAvailablityChangedSubscription = _ethernetManager.onAvailabilityChanged
+        .listen(
+          (e) =>
+              debugPrint('onAvailabilityChanged: ${e.iface}, ${e.isAvailable}'),
+        );
   }
 
   @override
@@ -32,6 +40,12 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _onAvailablityChangedSubscription.cancel();
+    super.dispose();
   }
 
   void _test() async {
